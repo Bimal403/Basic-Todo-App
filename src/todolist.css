@@ -1,0 +1,18 @@
+.todo {
+  display: flex;
+  gap: 2rem;
+  border: 2px solid grey;
+  padding: 3px;
+  margin-block: 8px;
+  border-radius: 5px;
+  width: 100%;
+  justify-content: space-between;
+}
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.buttons > button {
+  padding-inline: 8px;
+  padding-block: 4px;
+}
