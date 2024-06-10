@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
+import React from "react";
 import Todo from "./Components/todolist";
-import "./App.css";
+import "./App.scss";
 
 const App: FC = () => {
   const [task, setTask] = useState<string>("");
@@ -29,30 +30,38 @@ const App: FC = () => {
     setTodos(newTodos);
   }
   return (
-    <div className="wrapper">
+    <div className="container">
       <div className="todoapp">
-        <h1 className="title">To Do List</h1>
-        <div className="textfieldandbutton">
-          <input
-            type="text"
-            placeholder="Enter your new task here"
-            className="text-input"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-          />
-          <button className="addButton" onClick={addTodo}>
-            Add
-          </button>
+        <h2 className="todoapp-title">Todo App</h2>
+        <div className="my-wrapper">
+          <div className="todoapp-text-button">
+            <input
+              type="text"
+              placeholder="Enter your new task here"
+              className="todoapp-textonly"
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+            />
+            <button className="todoapp-buttononly" onClick={addTodo}>
+              Add
+            </button>
+          </div>
+          <div className="todo-wrapper ">
+            {todos.map((todo, index) => (
+              <React.Fragment key={index}>
+                <Todo
+                  key={index}
+                  text={todo}
+                  index={index}
+                  removeTodo={removeTodo}
+                  editTodo={editTodo}
+                />
+
+                <hr className="divider" />
+              </React.Fragment>
+            ))}
+          </div>
         </div>
-        {todos.map((todo, index) => (
-          <Todo
-            key={index}
-            text={todo}
-            index={index}
-            removeTodo={removeTodo}
-            editTodo={editTodo}
-          />
-        ))}
       </div>
     </div>
   );

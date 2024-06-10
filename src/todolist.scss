@@ -1,0 +1,27 @@
+@mixin centredev(
+  $display: flex,
+  $justify-content: center,
+  $align-items: center
+) {
+  display: $display;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+.container {
+  @include centredev();
+}
+.todo-container {
+  @include centredev($justify-content: space-between);
+  width: 100%;
+  max-width: 600px;
+  &-left {
+    @include centredev();
+    gap: 3px;
+  }
+  .buttons {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+  }
+}
